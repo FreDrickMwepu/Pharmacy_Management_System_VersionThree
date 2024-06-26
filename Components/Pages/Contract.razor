@@ -1,0 +1,86 @@
+@page "/contracts"
+@using Pharmacy_Management_System_Version3.Services
+@inject ContractServices ContractService
+
+<h3>Contracts</h3>
+
+<div>
+    <EditForm Model="_newContract" OnValidSubmit="HandleValidSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div>
+            <label for="startDate">Start Date:</label>
+            <InputDate id="startDate" @bind-Value="_newContract.StartDate" />
+        </div>
+        <div>
+            <label for="endDate">End Date:</label>
+            <InputDate id="endDate" @bind-Value="_newContract.EndDate" />
+        </div>
+        <div>
+            <label for="text">Text:</label>
+            <InputText id="text" @bind-Value="_newContract.Text" />
+        </div>
+        <div>
+            <label for="companyName">Company Name:</label>
+            <InputText id="companyName" @bind-Value="_newContract.CompanyName" />
+        </div>
+        <div>
+            <label for="pharmacyName">Pharmacy Name:</label>
+            <InputText id="pharmacyName" @bind-Value="_newContract.PharmacyName" />
+        </div>
+        <div>
+            <label for="supervisorSSN">Supervisor SSN:</label>
+            <InputText id="supervisorSSN" @bind-Value="_newContract.SupervisorSSN" />
+        </div>
+
+        <button type="submit">Add Contract</button>
+    </EditForm>
+</div>
+
+<h3>Contract List</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Contract ID</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Text</th>
+            <th>Company Name</th>
+            <th>Pharmacy Name</th>
+            <th>Supervisor SSN</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var contract in _contracts)
+        {
+            <tr>
+                <td>@contract.ContractID</td>
+                <td>@contract.StartDate.ToShortDateString()</td>
+                <td>@contract.EndDate.ToShortDateString()</td>
+                <td>@contract.Text</td>
+                <td>@contract.CompanyName</td>
+                <td>@contract.PharmacyName</td>
+                <td>@contract.SupervisorSSN</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+    private List<Contract> _contracts = new List<Contract>();
+    private Contract _newContract = new Contract();
+
+    protected override async Task OnInitializedAsync()
+    {
+        _contracts = await ContractService.Get();
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        await ContractService.Post(_newContract);
+        _contracts = await ContractService.Get(); // Refresh the contract list
+        _newContract = new Contract(); // Clear the form
+    }
+}

@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pharmacy_Management_System_Version3", "Pharmacy_Management_System_Version3.csproj", "{4A53EFF5-BCBC-41DA-8FD1-EBB7DA214F6C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4A53EFF5-BCBC-41DA-8FD1-EBB7DA214F6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A53EFF5-BCBC-41DA-8FD1-EBB7DA214F6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A53EFF5-BCBC-41DA-8FD1-EBB7DA214F6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A53EFF5-BCBC-41DA-8FD1-EBB7DA214F6C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
